@@ -14,9 +14,9 @@ searchForm.addEventListener("submit", (event) => {
         .then((data) => {
             document.getElementById("city").textContent = data.name;
             document.getElementById("temp").textContent =
-            "Currently: " + data.main.temp + "F";
+            "Currently: " + data.main.temp + " Degrees Kelvin";
             document.getElementById("feels").textContent =
-            "Feels like " + data.main.feels_like + "F";
+            "Feels like " + data.main.feels_like + " Degrees Kelvin";
         })
         .catch((err) => {
             console.log(err.message);
@@ -25,10 +25,10 @@ searchForm.addEventListener("submit", (event) => {
 
 
     fetch(
-        "https://api.giphy.com/v1/gifs/translate?api_key=LvM2qVpX9reYwFDOIIceoI0Dx0oqDSgH&s=dogs"
+        "https://api.giphy.com/v1/gifs/translate?api_key=LvM2qVpX9reYwFDOIIceoI0Dx0oqDSgH&s=city"
     )
     .then(async (data) => {
-        let parsedData = await data.json;
+        let parsedData = await data.json();
         let img = document.getElementById("gif");
         img.src = parsedData.data.images.original.url;
         img.alt = parsedData.data.title;
